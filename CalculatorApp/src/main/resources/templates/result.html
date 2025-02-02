@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        /* Container */
+        .result-container {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        /* Heading */
+        .result-container h1 {
+            margin-bottom: 1.5rem;
+            color: #4caf50;
+            font-size: 1.8rem;
+        }
+
+        /* Labels and Inputs */
+        label {
+            display: block;
+            font-size: 1rem;
+            margin: 0.5rem 0 0.2rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        /* Result Display */
+        p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        p strong {
+            color: #4caf50;
+        }
+
+        /* Button Group */
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        button {
+            width: 48%;
+            padding: 0.5rem;
+            margin: 0.2rem 0;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:active {
+            background-color: #388e3c;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 400px) {
+            .result-container {
+                width: 90%;
+            }
+
+            button {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Calculator</h1>
+        <div>
+            <p><strong>Results:</strong> <span th:text="${result}"></span></p>
+            <p><strong>Operation:</strong> <span th:text="${operation}"></span></p>
+
+            <form action="/calculate" method="post">
+                <label for="num1">Enter num1:</label>
+                <input type="number" id="num1" name="num1" value="${num1}" required>
+
+                <label for="num2">Enter num2:</label>
+                <input type="number" id="num2" name="num2" value="${num2}" required>
+
+                <div class="button-group">
+                    <button type="submit" name="operation" value="add">ADD</button>
+                    <button type="submit" name="operation" value="sub">SUB</button>
+                    <button type="submit" name="operation" value="mul">MUL</button>
+                    <button type="submit" name="operation" value="div">DIV</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
